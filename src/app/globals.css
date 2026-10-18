@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #0a0f1e;
+  --color-surface: #111a2e;
+  --color-border: #1e2a45;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #60a5fa;
+  --color-accent: #38bdf8;
+  --color-text: #e5e9f2;
+  --color-muted: #94a3b8;
+  --font-heading: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --radius-card: 14px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-primary) 35%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary-hover);
+  outline-offset: 3px;
+}
+
+.grid-hero-bg {
+  background-image:
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-background) 92%, transparent), var(--color-background)),
+    linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
+}
+
+.glow-hover {
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-primary) 40%, transparent),
+    0 12px 40px -12px color-mix(in srgb, var(--color-primary) 45%, transparent);
+}
