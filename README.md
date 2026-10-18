@@ -4,7 +4,9 @@ Dark, professional portfolio built with **Next.js (App Router)**, **Tailwind CSS
 
 ## Live site
 
-Deploy URL: update after Vercel deployment (see [Deploy](#deploy)).
+**Live:** [https://atiq-portfolio-pearl.vercel.app](https://atiq-portfolio-pearl.vercel.app)
+
+**GitHub:** [https://github.com/atiqahmedreza/atiq-portfolio](https://github.com/atiqahmedreza/atiq-portfolio)
 
 ## Setup
 

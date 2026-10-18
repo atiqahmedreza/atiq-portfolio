@@ -3,7 +3,7 @@ export const siteConfig = {
   title: "Atiq | MLOps Engineer in the Making",
   description:
     "Portfolio of Atiq — CSE undergraduate at Varendra University, Rajshahi, building production-grade ML systems, full-stack apps, and MLOps tooling.",
-  url: "https://atiq-portfolio.vercel.app",
+  url: "https://atiq-portfolio-pearl.vercel.app",
   designation:
     "MLOps Engineer in the Making | Full Stack and AI/ML Developer",
   pitch:
