@@ -17,7 +17,7 @@ export const projects: Project[] = [
     name: "Wanderly",
     summary:
       "Full-stack travel agency for Bangladesh tours — explore packages, book with Stripe, and admin dashboards.",
-    image: "/images/projects/wanderly.svg",
+    image: "/images/projects/wanderly.jpg",
     tags: ["Next.js", "Express.js", "MongoDB", "Stripe", "JWT", "Render"],
     liveUrl: "https://wanderly-travel-agency-1.onrender.com",
     githubUrl: "https://github.com/atiqahmedreza/wanderly-travel-agency",
