@@ -17,7 +17,7 @@ export const projects: Project[] = [
     name: "Meridian Goods",
     summary:
       "Polished e-commerce storefront with catalog, Firebase auth, and protected product management.",
-    image: "/images/projects/meridian-goods.svg",
+    image: "/images/projects/meridian-goods.png",
     tags: ["Next.js", "Firebase", "TypeScript", "Tailwind CSS", "App Router"],
     liveUrl: "https://remontada-shop.vercel.app",
     githubUrl: "https://github.com/atiqahmedreza/meridian-goods",
