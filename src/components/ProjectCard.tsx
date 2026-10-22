@@ -12,6 +12,8 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
+  const hasLiveSite = project.liveUrl !== "#";
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 18 }}
@@ -31,7 +33,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
       <div className="flex flex-1 flex-col p-5 md:p-6">
         <h3 className="font-heading text-xl font-semibold text-text">{project.name}</h3>
-        <p className="mt-2 text-sm text-muted leading-relaxed flex-1">{project.summary}</p>
+        <p className="mt-2 text-sm text-text leading-relaxed flex-1">{project.summary}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {project.tags.slice(0, 4).map((tag) => (
             <span key={tag} className="font-mono text-[11px] rounded-md border border-border px-2 py-0.5 text-muted">
@@ -39,13 +41,26 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             </span>
           ))}
         </div>
-        <Link
-          href={`/projects/${project.slug}`}
-          className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary-hover hover:text-accent transition-colors"
-        >
-          View Details
-          <ArrowUpRight className="h-4 w-4" aria-hidden />
-        </Link>
+        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <Link
+            href={`/projects/${project.slug}`}
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary-hover hover:text-accent transition-colors"
+          >
+            View Details
+            <ArrowUpRight className="h-4 w-4" aria-hidden />
+          </Link>
+          {hasLiveSite ? (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-muted hover:text-text transition-colors"
+            >
+              Live site
+              <ArrowUpRight className="h-4 w-4" aria-hidden />
+            </a>
+          ) : null}
+        </div>
       </div>
     </motion.article>
   );
