@@ -13,6 +13,28 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "wanderly",
+    name: "Wanderly",
+    summary:
+      "Full-stack travel agency for Bangladesh tours — explore packages, book with Stripe, and admin dashboards.",
+    image: "/images/projects/wanderly.svg",
+    tags: ["Next.js", "Express.js", "MongoDB", "Stripe", "JWT", "Render"],
+    liveUrl: "https://wanderly-travel-agency-1.onrender.com",
+    githubUrl: "https://github.com/atiqahmedreza/wanderly-travel-agency",
+    description:
+      "Wanderly is a production-style travel platform built as a monorepo: a Next.js 14 frontend with Explore filters, package detail pages, blogs, and role-based user and admin dashboards, paired with an Express API on MongoDB Atlas. JWT auth secures bookings and wishlists; Stripe Checkout handles payments with a dev fallback when keys are absent. The app is deployed on Render with separate API and web services, CORS tied to the live client URL, and seed data for nine Bangladesh tour packages.",
+    challenges: [
+      "Deploying Next.js and Express from one repo on Render with correct root directories, PORT binding, and env-based API URLs.",
+      "Fixing hydration and image delivery on Render’s free tier without broken thumbnails or 502s during cold starts.",
+      "Keeping blog slug lookup and booking flows reliable against MongoDB ObjectId edge cases in production.",
+    ],
+    improvements: [
+      "Add email confirmations and booking reminders after Stripe checkout.",
+      "Expand admin analytics and export for seasonal demand.",
+      "Introduce multi-currency pricing and localized Bengali UI copy.",
+    ],
+  },
+  {
     slug: "meridian-goods",
     name: "Meridian Goods",
     summary:

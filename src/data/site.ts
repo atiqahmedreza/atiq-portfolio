@@ -3,7 +3,7 @@ export const siteConfig = {
   title: "Atiq | Portfolio",
   description:
     "Portfolio of Atiq — CSE student at Varendra University, Rajshahi, building responsive websites and full-stack web applications.",
-  url: "https://atiq-portfolio-atiq1.vercel.app",
+  url: "https://atiq-portfolio-pearl.vercel.app",
   designation: "Full Stack Web Developer | Frontend & Backend",
   pitch:
     "I design and build fast, accessible websites—from clean UI in React/Next.js to APIs and databases that power real products.",

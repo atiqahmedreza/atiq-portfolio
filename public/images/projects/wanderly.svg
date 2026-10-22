@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f2847"/>
+      <stop offset="100%" stop-color="#1a3a5c"/>
+    </linearGradient>
+  </defs>
+  <rect fill="url(#sky)" width="1200" height="750"/>
+  <circle cx="980" cy="140" r="56" fill="#f4a261" opacity="0.9"/>
+  <path fill="#2a9d8f" opacity="0.35" d="M0 520 Q300 460 600 500 T1200 480 V750 H0 Z"/>
+  <path fill="#264653" opacity="0.5" d="M0 580 Q400 540 700 570 T1200 560 V750 H0 Z"/>
+  <text x="600" y="320" fill="#e9f5f3" font-family="system-ui,Segoe UI,sans-serif" font-size="52" font-weight="700" text-anchor="middle">Wanderly</text>
+  <text x="600" y="380" fill="#94d4cb" font-family="system-ui,Segoe UI,sans-serif" font-size="22" text-anchor="middle">Travel agency · Bangladesh tours</text>
+  <text x="600" y="430" fill="#a8b8c8" font-family="ui-monospace,monospace" font-size="16" text-anchor="middle">Next.js · Express · MongoDB · Stripe</text>
+</svg>
