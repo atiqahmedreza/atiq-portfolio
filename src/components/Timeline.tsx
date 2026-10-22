@@ -52,9 +52,9 @@ export function Timeline({ items }: TimelineProps) {
                 </div>
                 <h3 className="font-heading text-lg font-semibold text-text">{item.title}</h3>
                 <p className="text-sm text-primary-hover mt-1">{item.subtitle}</p>
-                {item.description ? <p className="mt-3 text-sm text-muted leading-relaxed">{item.description}</p> : null}
+                {item.description ? <p className="mt-3 text-sm text-text leading-relaxed">{item.description}</p> : null}
                 {item.bullets?.length ? (
-                  <ul className="mt-3 space-y-2 text-sm text-muted list-disc pl-5">
+                  <ul className="mt-3 space-y-2 text-sm text-text list-disc pl-5">
                     {item.bullets.map((b) => (
                       <li key={b}>{b}</li>
                     ))}

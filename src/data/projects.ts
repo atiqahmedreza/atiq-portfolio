@@ -13,6 +13,28 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "meridian-goods",
+    name: "Meridian Goods",
+    summary:
+      "Polished e-commerce storefront with catalog, Firebase auth, and protected product management.",
+    image: "/images/projects/meridian-goods.svg",
+    tags: ["Next.js", "Firebase", "TypeScript", "Tailwind CSS", "App Router"],
+    liveUrl: "https://remontada-shop.vercel.app",
+    githubUrl: "https://github.com/atiqahmedreza/meridian-goods",
+    description:
+      "Meridian Goods is a full-featured storefront built for a Next.js assessment: public landing and catalog pages, dynamic product detail routes, and Firebase-powered sign-in. Signed-in users can add and manage custom products persisted in the browser, with responsive layouts, search and filters, and accessible forms throughout.",
+    challenges: [
+      "Keeping SSR and client auth UI in sync to avoid hydration mismatches in the navbar.",
+      "Configuring Firebase for both local development and Vercel production with public env vars.",
+      "Matching assessment specs for product cards, protected routes, and deployment deliverables.",
+    ],
+    improvements: [
+      "Persist user-added products with Firestore instead of localStorage only.",
+      "Connect checkout to a payment provider and order history.",
+      "Add automated E2E tests for auth and protected routes.",
+    ],
+  },
+  {
     slug: "fable",
     name: "Fable",
     summary: "Full-stack ebook sharing platform with auth, payments, and digital libraries.",

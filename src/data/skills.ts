@@ -10,18 +10,19 @@ export type SkillCategory = {
   skills: SkillItem[];
 };
 
+/** Fresher-friendly levels (~9 months web dev). Edit values in this file anytime. */
 export const skillCategories: SkillCategory[] = [
   {
     id: "frontend",
     title: "Frontend",
     icon: "layout",
     skills: [
-      { name: "HTML", proficiency: 92 },
-      { name: "CSS", proficiency: 88 },
-      { name: "JavaScript", proficiency: 90 },
-      { name: "React", proficiency: 85 },
-      { name: "Next.js", proficiency: 82 },
-      { name: "Tailwind CSS", proficiency: 88 },
+      { name: "HTML", proficiency: 78 },
+      { name: "CSS", proficiency: 72 },
+      { name: "JavaScript", proficiency: 68 },
+      { name: "React", proficiency: 62 },
+      { name: "Next.js", proficiency: 58 },
+      { name: "Tailwind CSS", proficiency: 70 },
     ],
   },
   {
@@ -29,35 +30,35 @@ export const skillCategories: SkillCategory[] = [
     title: "Backend",
     icon: "server",
     skills: [
-      { name: "Node.js", proficiency: 80 },
-      { name: "Express.js", proficiency: 78 },
-      { name: "MongoDB", proficiency: 75 },
-      { name: "REST APIs", proficiency: 85 },
-      { name: "JWT / OAuth", proficiency: 72 },
+      { name: "Node.js", proficiency: 55 },
+      { name: "Express.js", proficiency: 52 },
+      { name: "MongoDB", proficiency: 50 },
+      { name: "REST APIs", proficiency: 58 },
+      { name: "JWT / OAuth", proficiency: 45 },
     ],
   },
   {
-    id: "aiml",
-    title: "AI / ML",
-    icon: "brain",
+    id: "ui",
+    title: "UI & UX",
+    icon: "palette",
     skills: [
-      { name: "Python", proficiency: 82 },
-      { name: "scikit-learn", proficiency: 75 },
-      { name: "TensorFlow / PyTorch", proficiency: 68 },
-      { name: "SHAP", proficiency: 70 },
-      { name: "Pandas", proficiency: 80 },
+      { name: "Responsive Design", proficiency: 70 },
+      { name: "Accessibility basics", proficiency: 48 },
+      { name: "Component design", proficiency: 60 },
+      { name: "Figma (layout)", proficiency: 45 },
+      { name: "Recharts / charts", proficiency: 40 },
     ],
   },
   {
-    id: "mlops",
-    title: "MLOps & Tools",
+    id: "tools",
+    title: "Tools & Workflow",
     icon: "workflow",
     skills: [
-      { name: "Git / GitHub", proficiency: 88 },
-      { name: "Docker", proficiency: 70 },
-      { name: "CI/CD", proficiency: 72 },
-      { name: "Model Monitoring", proficiency: 68 },
-      { name: "Cursor", proficiency: 85 },
+      { name: "Git / GitHub", proficiency: 65 },
+      { name: "npm / package scripts", proficiency: 62 },
+      { name: "Docker basics", proficiency: 35 },
+      { name: "CI/CD basics", proficiency: 38 },
+      { name: "Cursor / VS Code", proficiency: 72 },
     ],
   },
 ];

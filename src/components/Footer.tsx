@@ -8,7 +8,7 @@ export function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="border-t border-border bg-surface/40">
+    <footer className="bg-surface/40">
       <div className="mx-auto max-w-6xl px-4 md:px-6 py-12">
         <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-start">
           <div>
@@ -17,7 +17,7 @@ export function Footer() {
               <span className="text-primary">.</span>
             </p>
             <p className="mt-2 max-w-md text-sm text-muted leading-relaxed">
-              Building dependable ML systems and thoughtful web experiences—from Rajshahi to production.
+              Building clean, fast web experiences—from Rajshahi to production.
             </p>
             <SocialLinks className="mt-5" />
           </div>

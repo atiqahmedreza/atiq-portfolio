@@ -1,14 +1,41 @@
 @import "tailwindcss";
 
+/* Theme tokens — Tailwind colors reference these so light/dark switch at runtime */
+:root,
+html.dark {
+  --theme-background: #100c0a;
+  --theme-surface: #1a1512;
+  --theme-border: #3d302a;
+  --theme-primary: #d57e5f;
+  --theme-primary-hover: #e8a088;
+  --theme-accent: #f0b5a0;
+  --theme-text: #ffffff;
+  --theme-muted: #e8e8e8;
+  --theme-on-primary: #ffffff;
+}
+
+html.light {
+  --theme-background: #f6f1ec;
+  --theme-surface: #ffffff;
+  --theme-border: #ddd2c9;
+  --theme-primary: #b85a3e;
+  --theme-primary-hover: #9a4a32;
+  --theme-accent: #c4694d;
+  --theme-text: #1a1210;
+  --theme-muted: #4a403a;
+  --theme-on-primary: #ffffff;
+}
+
 @theme inline {
-  --color-background: #0a0f1e;
-  --color-surface: #111a2e;
-  --color-border: #1e2a45;
-  --color-primary: #3b82f6;
-  --color-primary-hover: #60a5fa;
-  --color-accent: #38bdf8;
-  --color-text: #e5e9f2;
-  --color-muted: #94a3b8;
+  --color-background: var(--theme-background);
+  --color-surface: var(--theme-surface);
+  --color-border: var(--theme-border);
+  --color-primary: var(--theme-primary);
+  --color-primary-hover: var(--theme-primary-hover);
+  --color-accent: var(--theme-accent);
+  --color-text: var(--theme-text);
+  --color-muted: var(--theme-muted);
+  --color-on-primary: var(--theme-on-primary);
   --font-heading: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
@@ -19,14 +46,163 @@ html {
   scroll-behavior: smooth;
 }
 
+html.light .site-bg-grid {
+  opacity: 0.28;
+}
+
+html.light .site-bg-orb {
+  opacity: 0.42;
+}
+
+html.light .site-bg-shimmer {
+  opacity: 0.45;
+}
+
+html.light .site-bg-vignette {
+  background: radial-gradient(
+    ellipse 95% 90% at 50% 50%,
+    transparent 48%,
+    color-mix(in srgb, var(--color-background) 75%, #e8dfd6) 100%
+  );
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* —— Global animated background —— */
+.site-bg-base {
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -20%, color-mix(in srgb, var(--color-primary) 8%, transparent), transparent 55%),
+    radial-gradient(ellipse 90% 60% at 100% 50%, color-mix(in srgb, var(--color-accent) 6%, transparent), transparent 50%),
+    var(--color-background);
+}
+
+.site-bg-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-primary) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 7%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, black 20%, transparent 72%);
+  animation: site-bg-grid-drift 48s linear infinite;
+}
+
+.site-bg-orb {
+  filter: blur(72px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.site-bg-orb-a {
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 55%, transparent), transparent 68%);
+  animation: site-bg-float-a 22s ease-in-out infinite;
+}
+
+.site-bg-orb-b {
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 50%, transparent), transparent 70%);
+  animation: site-bg-float-b 26s ease-in-out infinite;
+}
+
+.site-bg-orb-c {
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-primary-hover) 45%, transparent), transparent 68%);
+  animation: site-bg-float-c 24s ease-in-out infinite;
+}
+
+.site-bg-orb-d {
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 40%, transparent), transparent 72%);
+  animation: site-bg-float-d 28s ease-in-out infinite;
+}
+
+.site-bg-shimmer {
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    color-mix(in srgb, var(--color-accent) 4%, transparent) 50%,
+    transparent 60%
+  );
+  background-size: 200% 200%;
+  opacity: 0.6;
+  animation: site-bg-shimmer 18s ease-in-out infinite;
+}
+
+.site-bg-vignette {
+  background: radial-gradient(ellipse 95% 90% at 50% 50%, transparent 45%, color-mix(in srgb, var(--color-background) 85%, black) 100%);
+}
+
+@keyframes site-bg-grid-drift {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 56px 56px, 56px 56px;
+  }
+}
+
+@keyframes site-bg-float-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(8vw, 6vh) scale(1.08);
+  }
+}
+
+@keyframes site-bg-float-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-10vw, 8vh) scale(1.05);
+  }
+}
+
+@keyframes site-bg-float-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6vw, -7vh) scale(1.1);
+  }
+}
+
+@keyframes site-bg-float-d {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-7vw, -5vh) scale(1.06);
+  }
+}
+
+@keyframes site-bg-shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-bg-grid,
+  .site-bg-orb,
+  .site-bg-shimmer {
+    animation: none !important;
+  }
 }
 
 ::selection {
-  background-color: color-mix(in srgb, var(--color-primary) 35%, transparent);
+  background-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
 }
 
 :focus-visible {
@@ -36,10 +212,36 @@ body {
 
 .grid-hero-bg {
   background-image:
-    linear-gradient(to bottom, color-mix(in srgb, var(--color-background) 92%, transparent), var(--color-background)),
-    linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px);
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-background) 90%, transparent), var(--color-background)),
+    linear-gradient(color-mix(in srgb, var(--color-primary) 9%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 9%, transparent) 1px, transparent 1px);
   background-size: 100% 100%, 48px 48px, 48px 48px;
+}
+
+.education-section-bg {
+  background:
+    radial-gradient(ellipse 55% 45% at 0% 20%, color-mix(in srgb, var(--color-primary) 11%, transparent), transparent 55%),
+    radial-gradient(ellipse 45% 40% at 100% 80%, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 50%);
+}
+
+.skills-section-bg {
+  background:
+    radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in srgb, var(--color-primary) 12%, transparent), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 0% 100%, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 50%);
+}
+
+.about-section-bg {
+  background:
+    radial-gradient(ellipse 70% 55% at 8% 0%, color-mix(in srgb, var(--color-primary) 14%, transparent), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 95% 100%, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 55%);
+}
+
+.hero-photo-glow {
+  background: radial-gradient(
+    ellipse 115% 85% at 72% 18%,
+    color-mix(in srgb, var(--color-primary) 24%, transparent),
+    transparent 58%
+  );
 }
 
 .glow-hover {
@@ -47,6 +249,7 @@ body {
 }
 
 .glow-hover:hover {
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-primary) 40%, transparent),
-    0 12px 40px -12px color-mix(in srgb, var(--color-primary) 45%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-primary) 45%, transparent),
+    0 12px 40px -12px color-mix(in srgb, var(--color-accent) 35%, transparent);
 }

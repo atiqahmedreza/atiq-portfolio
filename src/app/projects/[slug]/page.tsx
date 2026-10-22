@@ -47,7 +47,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       </Link>
 
       <header className="space-y-4">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Case study</p>
         <h1 className="font-heading text-3xl md:text-5xl font-bold text-text tracking-tight">{project.name}</h1>
         <p className="text-lg text-muted leading-relaxed">{project.summary}</p>
       </header>

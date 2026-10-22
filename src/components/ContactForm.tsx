@@ -70,7 +70,7 @@ export function ContactForm() {
           name="name"
           value={form.name}
           onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-          className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-text placeholder:text-muted/70 focus:border-primary/50"
+          className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-text placeholder:text-muted/90 focus:border-primary/50"
           placeholder="Your name"
           autoComplete="name"
         />
@@ -86,7 +86,7 @@ export function ContactForm() {
           type="email"
           value={form.email}
           onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-          className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-text placeholder:text-muted/70 focus:border-primary/50"
+          className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-text placeholder:text-muted/90 focus:border-primary/50"
           placeholder="you@example.com"
           autoComplete="email"
         />
@@ -102,7 +102,7 @@ export function ContactForm() {
           rows={5}
           value={form.message}
           onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-          className="w-full resize-y rounded-xl border border-border bg-background px-4 py-3 text-sm text-text placeholder:text-muted/70 focus:border-primary/50"
+          className="w-full resize-y rounded-xl border border-border bg-background px-4 py-3 text-sm text-text placeholder:text-muted/90 focus:border-primary/50"
           placeholder="Tell me about your project or opportunity..."
         />
         {errors.message ? <p className="mt-1 text-xs text-red-400">{errors.message}</p> : null}

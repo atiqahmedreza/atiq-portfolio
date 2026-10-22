@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/cn";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const sectionIds = siteConfig.navLinks.map((l) => l.href.replace("#", ""));
 
@@ -80,6 +81,7 @@ export function Navbar() {
         </ul>
 
         <div className="hidden lg:flex items-center gap-3">
+          <ThemeToggle />
           <a
             href={siteConfig.resumePath}
             target="_blank"
@@ -90,16 +92,19 @@ export function Navbar() {
           </a>
         </div>
 
-        <button
-          type="button"
-          className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface text-text"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface text-text"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </nav>
 
       <div
@@ -127,12 +132,13 @@ export function Navbar() {
               </li>
             );
           })}
-          <li className="pt-2">
+          <li className="pt-2 flex flex-col gap-2 sm:flex-row">
+            <ThemeToggle className="w-full sm:flex-1" showLabel />
             <a
               href={siteConfig.resumePath}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-full items-center justify-center rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-white"
+              className="flex w-full sm:flex-1 items-center justify-center rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-white"
               onClick={() => setOpen(false)}
             >
               Resume
