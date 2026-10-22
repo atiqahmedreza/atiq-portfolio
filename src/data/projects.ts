@@ -34,27 +34,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "meridian-goods",
-    name: "Meridian Goods",
-    summary: "Curated e-commerce storefront with flat pricing and Stripe checkout.",
-    image: "/images/projects/meridian-goods.png",
-    tags: ["Next.js", "Tailwind CSS", "Stripe", "E-commerce"],
-    liveUrl: "https://meridian-goods.vercel.app",
-    githubUrl: "https://github.com/atiqahmedreza/meridian-goods",
-    description:
-      "Meridian Goods is a Next.js storefront for eight lifestyle products—desk, kitchen, and travel essentials—sold at one flat price. The site focuses on clear product storytelling, responsive layouts, and a streamlined checkout that supports card and bank payments through Stripe. Built as a production-style demo that mirrors real shop flows from browse to payment confirmation.",
-    challenges: [
-      "Keeping a premium, editorial feel while every item shares the same price point.",
-      "Wiring Stripe checkout and webhooks so order state stays consistent after payment.",
-      "Building responsive product grids and detail views that work on mobile and desktop.",
-    ],
-    improvements: [
-      "Admin dashboard for inventory and order management.",
-      "Customer accounts with order history and saved addresses.",
-      "Product search, filters, and related-item recommendations.",
-    ],
-  },
-  {
     slug: "taskboard",
     name: "TaskBoard",
     summary: "Kanban-style task manager with drag-and-drop columns and team labels.",
