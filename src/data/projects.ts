@@ -59,22 +59,23 @@ export const projects: Project[] = [
   {
     slug: "fable",
     name: "Fable",
-    summary: "Full-stack ebook sharing platform with auth, payments, and digital libraries.",
+    summary:
+      "Ebook marketplace — browse and buy originals, writer publishing fees, role dashboards, and admin analytics.",
     image: "/images/projects/fable.svg",
-    tags: ["Next.js", "Express.js", "MongoDB", "Stripe", "JWT", "Google OAuth"],
-    liveUrl: "#",
-    githubUrl: "https://github.com/atiq-cse",
+    tags: ["Next.js", "Express.js", "MongoDB Atlas", "Stripe", "JWT", "Vercel", "Render"],
+    liveUrl: "https://fable-client-pi.vercel.app",
+    githubUrl: "https://github.com/atiqahmedreza/fable-client",
     description:
-      "Fable is a production-style ebook sharing platform where readers discover titles, manage personal shelves, and publishers distribute digital copies. The Next.js frontend delivers fast, SEO-friendly browsing while an Express API handles authentication, entitlements, and Stripe checkout. MongoDB stores users, catalogs, and purchase records with indexing tuned for search and admin workflows.",
+      "Fable is a full-stack ebook sharing platform with separate Next.js and Express repos. Readers search, filter, and purchase single-copy titles; writers pay a one-time publishing fee then manage manuscripts; admins oversee users, the catalog, and revenue charts. JWT auth (7-day sessions), optional Google via Better Auth, Stripe or demo checkout, and MongoDB Atlas back the live deployment — client on Vercel and API on Render with CORS locked to the production origin. API repo: github.com/atiqahmedreza/fable-server.",
     challenges: [
-      "Designing OAuth and JWT flows that stay secure without hurting signup conversion.",
-      "Modeling ebook entitlements and Stripe webhooks so access updates reliably after payment.",
-      "Balancing file upload size limits with responsive preview generation on the client.",
+      "Connecting Atlas, Render, and Vercel with correct MONGODB_URI, CLIENT_URL, and NEXT_PUBLIC_API_URL without CORS or auth failures.",
+      "Keeping private-route reloads stable with JWT in localStorage while still supporting Google OAuth on the client.",
+      "Modeling single-buyer ebook sales, writer fees, and admin analytics from real transaction records.",
     ],
     improvements: [
-      "Add full-text search with Elasticsearch or Atlas Search.",
-      "Introduce reading progress sync and offline PWA support.",
-      "Harden rate limiting and audit logging for admin actions.",
+      "Enable production Stripe webhooks and imgBB uploads end-to-end on Render.",
+      "Add Atlas Search for faster full-text discovery across long manuscript content.",
+      "Expand automated smoke tests for login, browse, and dashboard reload flows.",
     ],
   },
 ];
