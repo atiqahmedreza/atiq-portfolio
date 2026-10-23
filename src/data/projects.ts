@@ -61,7 +61,7 @@ export const projects: Project[] = [
     name: "Fable",
     summary:
       "Ebook marketplace — browse and buy originals, writer publishing fees, role dashboards, and admin analytics.",
-    image: "/images/projects/fable.svg",
+    image: "/images/projects/fable.jpg",
     tags: ["Next.js", "Express.js", "MongoDB Atlas", "Stripe", "JWT", "Vercel", "Render"],
     liveUrl: "https://fable-client-pi.vercel.app",
     githubUrl: "https://github.com/atiqahmedreza/fable-client",
