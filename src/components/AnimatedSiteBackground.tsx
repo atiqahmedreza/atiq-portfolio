@@ -1,5 +1,3 @@
-"use client";
-
 export function AnimatedSiteBackground() {
   return (
     <div className="site-bg-root pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden>

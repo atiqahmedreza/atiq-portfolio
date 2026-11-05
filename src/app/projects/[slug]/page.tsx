@@ -39,11 +39,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   return (
     <article className="mx-auto max-w-4xl px-4 py-28 md:px-6 md:py-32">
       <Link
-        href="/#projects"
+        href="/projects"
         className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-primary-hover transition-colors mb-8"
       >
         <ArrowLeft className="h-4 w-4" aria-hidden />
-        Back to Projects
+        All projects
       </Link>
 
       <header className="space-y-4">
@@ -70,18 +70,33 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         ))}
       </div>
 
+      <div className="mt-8 grid gap-3 sm:grid-cols-3">
+        {project.outcomes.map((o) => (
+          <div key={o.label} className="rounded-xl border border-border bg-surface px-4 py-3">
+            <p className="font-mono text-[10px] uppercase tracking-wider text-muted">{o.label}</p>
+            <p className="font-heading mt-1 text-lg font-semibold text-text">{o.value}</p>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-6 rounded-xl border border-primary/25 bg-primary/5 px-4 py-3 text-sm text-text">
+        <span className="font-mono text-[10px] uppercase tracking-wider text-accent">My role</span>
+        <br />
+        {project.role}
+      </p>
+
       <div className="mt-8 flex flex-wrap gap-3">
         {isLivePlaceholder ? (
           <span className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-muted">
             <ExternalLink className="h-4 w-4" aria-hidden />
-            Live demo — add URL in projects.ts
+            Live demo coming soon
           </span>
         ) : (
           <a
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white glow-hover"
+            className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-on-primary glow-hover"
           >
             <ExternalLink className="h-4 w-4" aria-hidden />
             Live Project

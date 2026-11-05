@@ -1,9 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import type { Project } from "@/data/projects";
 
 type ProjectCardProps = {
@@ -15,11 +13,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const hasLiveSite = project.liveUrl !== "#";
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45, delay: index * 0.06 }}
+    <Reveal
+      as="article"
+      delay={index * 60}
       className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface glow-hover"
     >
       <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-background">
@@ -62,6 +58,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           ) : null}
         </div>
       </div>
-    </motion.article>
+    </Reveal>
   );
 }

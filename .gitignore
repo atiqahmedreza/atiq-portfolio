@@ -12,9 +12,14 @@
 
 # env
 .env*
+# ...but the template documenting which vars are needed must be committed.
+!.env.example
 
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
+
+# local python helper output
+/scratch/

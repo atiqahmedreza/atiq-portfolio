@@ -1,14 +1,15 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+// Native ESLint 9 flat config.
+// The previous FlatCompat-based setup crashed on ESLint >= 9.39
+// ("Converting circular structure to JSON"), so `npm run lint` never ran.
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [...compat.extends("next/core-web-vitals", "next/typescript")];
+const eslintConfig = [
+  {
+    ignores: [".next/**", "out/**", "build/**", "node_modules/**", "next-env.d.ts"],
+  },
+  ...(Array.isArray(nextCoreWebVitals) ? nextCoreWebVitals : [nextCoreWebVitals]),
+  ...(Array.isArray(nextTypescript) ? nextTypescript : [nextTypescript]),
+];
 
 export default eslintConfig;

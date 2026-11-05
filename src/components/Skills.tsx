@@ -14,8 +14,8 @@ export function Skills() {
             <p className="mt-1 text-sm font-semibold text-text">Full-stack web</p>
           </div>
           <div className="rounded-xl border border-border/80 bg-surface/80 px-4 py-3 text-center">
-            <p className="font-mono text-[10px] uppercase tracking-wider text-muted">Learning time</p>
-            <p className="mt-1 text-sm font-semibold text-primary-hover">9 months</p>
+            <p className="font-mono text-[10px] uppercase tracking-wider text-muted">Primary stack</p>
+            <p className="mt-1 text-sm font-semibold text-primary-hover">Next.js + Node.js</p>
           </div>
           <div className="rounded-xl border border-border/80 bg-surface/80 px-4 py-3 text-center sm:col-span-1">
             <p className="font-mono text-[10px] uppercase tracking-wider text-muted">Categories</p>

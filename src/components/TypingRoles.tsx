@@ -35,7 +35,9 @@ export function TypingRoles() {
 
   return (
     <p className="font-mono text-sm md:text-base text-primary-hover min-h-[1.5rem]">
-      <span aria-live="polite">{text}</span>
+      {/* Announce the full list once; the animated text itself is decorative. */}
+      <span className="sr-only">{roles.join(", ")}</span>
+      <span aria-hidden>{text}</span>
       <span className="inline-block w-[2px] h-4 ml-0.5 bg-primary-hover animate-pulse align-middle" aria-hidden />
     </p>
   );

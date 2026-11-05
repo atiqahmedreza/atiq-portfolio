@@ -1,7 +1,5 @@
-"use client";
-
 import { BookOpen, GraduationCap, Landmark, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import type { EducationEntry } from "@/data/education";
 import { cn } from "@/lib/cn";
 
@@ -33,16 +31,16 @@ export function EducationTimeline({ entries }: EducationTimelineProps) {
           const Icon = meta.icon;
 
           return (
-            <motion.li
+            <Reveal
               key={entry.id}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: index * 0.07 }}
+              as="li"
+              delay={index * 70}
               className="grid gap-4 sm:grid-cols-[7.25rem_1fr] sm:items-start"
             >
               <div className="sm:pt-5">
-                <p className="font-mono text-xs font-medium uppercase tracking-wide text-primary-hover">{entry.period}</p>
+                <p className="font-mono text-xs font-medium uppercase tracking-wide text-primary-hover">
+                  {entry.period}
+                </p>
               </div>
 
               <article className={educationCardClass}>
@@ -69,7 +67,7 @@ export function EducationTimeline({ entries }: EducationTimelineProps) {
                   </div>
                 </div>
               </article>
-            </motion.li>
+            </Reveal>
           );
         })}
       </ul>

@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
@@ -9,7 +9,7 @@ export function Contact() {
   return (
     <section id="contact" className="scroll-mt-28 py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <SectionHeading title="Get In Touch" />
+        <SectionHeading title="Get In Touch" subtitle={siteConfig.availability} />
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-6">
             <div className="rounded-2xl border border-border bg-surface p-6 glow-hover space-y-4">
@@ -23,13 +23,20 @@ export function Contact() {
                   {siteConfig.email}
                 </span>
               </a>
-              <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="flex items-start gap-3 text-text hover:text-primary-hover transition-colors">
+              <a href={`tel:${siteConfig.phoneE164}`} className="flex items-start gap-3 text-text hover:text-primary-hover transition-colors">
                 <Phone className="h-5 w-5 mt-0.5 shrink-0 text-primary" aria-hidden />
                 <span>
                   <span className="block text-xs font-mono uppercase tracking-wider text-muted mb-0.5">Phone</span>
                   {siteConfig.phone}
                 </span>
               </a>
+              <p className="flex items-start gap-3 text-text">
+                <MapPin className="h-5 w-5 mt-0.5 shrink-0 text-primary" aria-hidden />
+                <span>
+                  <span className="block text-xs font-mono uppercase tracking-wider text-muted mb-0.5">Location</span>
+                  {siteConfig.location} · {siteConfig.timezone}
+                </span>
+              </p>
               <a
                 href={whatsappUrl}
                 target="_blank"

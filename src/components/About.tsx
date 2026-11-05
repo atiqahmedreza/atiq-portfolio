@@ -1,8 +1,6 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { CalendarDays, Code2, FolderKanban } from "lucide-react";
 import { siteConfig } from "@/data/site";
+import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
 
 const statMeta = [
@@ -21,12 +19,9 @@ export function About() {
         <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
           <div className="space-y-4 lg:col-span-7">
             {siteConfig.aboutParagraphs.map((paragraph, index) => (
-              <motion.div
+              <Reveal
                 key={index}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.45, delay: index * 0.08 }}
+                delay={index * 80}
                 className="relative overflow-hidden rounded-2xl border border-border/80 bg-surface/90 p-5 shadow-[inset_0_1px_0_0_rgba(255,250,246,0.04)] md:p-6"
               >
                 <div
@@ -38,17 +33,11 @@ export function About() {
                 ) : null}
 
                 <p className="relative text-sm leading-relaxed text-text md:text-base md:leading-7">{paragraph}</p>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-5"
-          >
+          <Reveal variant="right" className="lg:col-span-5">
             <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-gradient-to-br from-surface via-surface to-background p-6 glow-hover md:p-7">
               <div className="absolute -right-10 bottom-0 h-32 w-32 rounded-full bg-accent/15 blur-3xl" aria-hidden />
               <dl className="space-y-3">
@@ -56,31 +45,30 @@ export function About() {
                   const meta = statMeta[index] ?? statMeta[0];
                   const Icon = meta.icon;
                   return (
-                    <motion.div
-                      key={stat.label}
-                      initial={{ opacity: 0, y: 8 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.08, duration: 0.35 }}
-                      className={`group relative overflow-hidden rounded-xl border border-border/80 bg-gradient-to-br ${meta.tone} px-4 py-4 transition-transform duration-300 hover:-translate-y-0.5`}
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <dt className="text-sm font-medium text-muted">{stat.label}</dt>
-                          <dd className="font-heading mt-1 text-3xl font-bold tracking-tight text-text">
-                            {stat.value}
-                          </dd>
+                    <Reveal key={stat.label} delay={index * 80}>
+                      {/* Hover-lift lives on the inner element: the reveal owns the
+                          outer transform, so the two would otherwise fight. */}
+                      <div
+                        className={`group relative overflow-hidden rounded-xl border border-border/80 bg-gradient-to-br ${meta.tone} px-4 py-4 transition-transform duration-300 hover:-translate-y-0.5`}
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div>
+                            <dt className="text-sm font-medium text-muted">{stat.label}</dt>
+                            <dd className="font-heading mt-1 text-3xl font-bold tracking-tight text-text">
+                              {stat.value}
+                            </dd>
+                          </div>
+                          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-primary/25 bg-background/50 text-primary-hover transition-colors group-hover:border-primary/45">
+                            <Icon className="h-5 w-5" aria-hidden />
+                          </span>
                         </div>
-                        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-primary/25 bg-background/50 text-primary-hover transition-colors group-hover:border-primary/45">
-                          <Icon className="h-5 w-5" aria-hidden />
-                        </span>
                       </div>
-                    </motion.div>
+                    </Reveal>
                   );
                 })}
               </dl>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

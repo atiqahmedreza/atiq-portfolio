@@ -1,11 +1,20 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowUp } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { SocialLinks } from "@/components/SocialLinks";
 
 export function Footer() {
-  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  // Same as the navbar: in-page anchors need a "/" prefix off the home page.
+  const isHome = usePathname() === "/";
+  const hrefFor = (hash: string) => (isHome ? hash : `/${hash}`);
+
+  const scrollTop = () => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  };
 
   return (
     <footer className="bg-surface/40">
@@ -26,16 +35,18 @@ export function Footer() {
             <ul className="grid grid-cols-2 gap-2 text-sm">
               {siteConfig.navLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-muted hover:text-primary-hover transition-colors">
+                  <Link href={hrefFor(link.href)} className="text-muted hover:text-primary-hover transition-colors">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
         </div>
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-t border-border pt-6">
-          <p className="text-xs text-muted">© 2026 Atiq. All rights reserved.</p>
+          <p className="text-xs text-muted">
+            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+          </p>
           <button
             type="button"
             onClick={scrollTop}

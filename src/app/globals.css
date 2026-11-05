@@ -11,16 +11,18 @@ html.dark {
   --theme-accent: #f0b5a0;
   --theme-text: #ffffff;
   --theme-muted: #e8e8e8;
-  --theme-on-primary: #ffffff;
+  /* Dark ink on the light brand fill: 6.13:1 normal, 8.63:1 on hover (WCAG AA). */
+  --theme-on-primary: #1a1210;
 }
 
 html.light {
   --theme-background: #f6f1ec;
   --theme-surface: #ffffff;
   --theme-border: #ddd2c9;
-  --theme-primary: #b85a3e;
+  --theme-primary: #a8502f;
   --theme-primary-hover: #9a4a32;
-  --theme-accent: #c4694d;
+  /* was #c4694d (3.42:1) — too low for the small uppercase labels that use it */
+  --theme-accent: #a8502f;
   --theme-text: #1a1210;
   --theme-muted: #4a403a;
   --theme-on-primary: #ffffff;
@@ -44,6 +46,8 @@ html.light {
 
 html {
   scroll-behavior: smooth;
+  /* Height of the fixed header — the mobile menu panel offsets by this. */
+  --nav-h: 76px;
 }
 
 html.light .site-bg-grid {
@@ -196,8 +200,13 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .site-bg-grid,
   .site-bg-orb,
-  .site-bg-shimmer {
+  .site-bg-shimmer,
+  .animate-pulse {
     animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }
 
@@ -252,4 +261,101 @@ body {
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--color-primary) 45%, transparent),
     0 12px 40px -12px color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+
+/* —— Scroll reveal ——
+   Drives the <Reveal> component. The transition lives here rather than in JS so
+   that reduced-motion users pay no animation cost at all. */
+[data-reveal] {
+  opacity: 0;
+}
+
+[data-reveal="up"] {
+  transform: translateY(16px);
+}
+
+[data-reveal="right"] {
+  transform: translateX(16px);
+}
+
+[data-reveal="scale"] {
+  transform: scale(0.94);
+}
+
+[data-reveal][data-revealed] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.45s ease-out var(--reveal-delay, 0ms),
+    transform 0.45s ease-out var(--reveal-delay, 0ms);
+}
+
+/* —— Hero entrance ——
+   Plays on load rather than on scroll, so it needs no observer. */
+.hero-enter {
+  animation: hero-rise 0.5s ease-out both;
+}
+
+.hero-enter-photo {
+  animation: hero-pop 0.55s ease-out 0.1s both;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* —— Background cost on small screens ——
+   Four 72px-blur orbs are the most expensive thing on the page and mobile GPUs
+   feel it most. Keep two, blur them less, and stop the overlay animations. */
+.site-bg-root {
+  contain: layout paint style;
+}
+
+@media (max-width: 768px) {
+  .site-bg-orb-c,
+  .site-bg-orb-d {
+    display: none;
+  }
+
+  .site-bg-orb {
+    filter: blur(48px);
+    will-change: auto;
+  }
+
+  .site-bg-grid,
+  .site-bg-shimmer {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal][data-revealed] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hero-enter,
+  .hero-enter-photo {
+    animation: none !important;
+  }
 }

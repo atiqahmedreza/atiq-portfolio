@@ -2,7 +2,7 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { cn } from "@/lib/cn";
 
 type ThemeToggleProps = {
@@ -10,21 +10,35 @@ type ThemeToggleProps = {
   showLabel?: boolean;
 };
 
+const noopSubscribe = () => () => {};
+
+/**
+ * `false` during SSR and the first client render, `true` afterwards.
+ * Equivalent to the usual `useEffect(() => setMounted(true))` guard, without the
+ * cascading render that `react-hooks/set-state-in-effect` (correctly) flags.
+ */
+function useMounted() {
+  return useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false,
+  );
+}
+
 export function ThemeToggle({ className, showLabel = false }: ThemeToggleProps) {
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
 
   const isLight = (resolvedTheme ?? theme) === "light";
-
   const toggle = () => setTheme(isLight ? "dark" : "light");
 
   if (!mounted) {
+    // Reserve the exact footprint so the header doesn't shift on hydration.
     return (
       <span
         className={cn(
-          "inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface",
+          "inline-flex items-center justify-center rounded-xl border border-border bg-surface",
+          showLabel ? "px-4 py-2 text-sm font-medium" : "h-11 w-11",
           className,
         )}
         aria-hidden

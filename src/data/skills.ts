@@ -1,6 +1,5 @@
 export type SkillItem = {
   name: string;
-  proficiency: number;
 };
 
 export type SkillCategory = {
@@ -10,19 +9,19 @@ export type SkillCategory = {
   skills: SkillItem[];
 };
 
-/** Fresher-friendly levels (~9 months web dev). Edit values in this file anytime. */
+/** Technologies I actively build with. Edit this file to add or remove entries. */
 export const skillCategories: SkillCategory[] = [
   {
     id: "frontend",
     title: "Frontend",
     icon: "layout",
     skills: [
-      { name: "HTML", proficiency: 78 },
-      { name: "CSS", proficiency: 72 },
-      { name: "JavaScript", proficiency: 68 },
-      { name: "React", proficiency: 62 },
-      { name: "Next.js", proficiency: 58 },
-      { name: "Tailwind CSS", proficiency: 70 },
+      { name: "HTML" },
+      { name: "CSS" },
+      { name: "JavaScript" },
+      { name: "React" },
+      { name: "Next.js" },
+      { name: "Tailwind CSS" },
     ],
   },
   {
@@ -30,11 +29,11 @@ export const skillCategories: SkillCategory[] = [
     title: "Backend",
     icon: "server",
     skills: [
-      { name: "Node.js", proficiency: 55 },
-      { name: "Express.js", proficiency: 52 },
-      { name: "MongoDB", proficiency: 50 },
-      { name: "REST APIs", proficiency: 58 },
-      { name: "JWT / OAuth", proficiency: 45 },
+      { name: "Node.js" },
+      { name: "Express.js" },
+      { name: "MongoDB" },
+      { name: "REST APIs" },
+      { name: "JWT / OAuth" },
     ],
   },
   {
@@ -42,11 +41,11 @@ export const skillCategories: SkillCategory[] = [
     title: "UI & UX",
     icon: "palette",
     skills: [
-      { name: "Responsive Design", proficiency: 70 },
-      { name: "Accessibility basics", proficiency: 48 },
-      { name: "Component design", proficiency: 60 },
-      { name: "Figma (layout)", proficiency: 45 },
-      { name: "Recharts / charts", proficiency: 40 },
+      { name: "Responsive Design" },
+      { name: "Accessibility basics" },
+      { name: "Component design" },
+      { name: "Figma (layout)" },
+      { name: "Recharts / charts" },
     ],
   },
   {
@@ -54,11 +53,11 @@ export const skillCategories: SkillCategory[] = [
     title: "Tools & Workflow",
     icon: "workflow",
     skills: [
-      { name: "Git / GitHub", proficiency: 65 },
-      { name: "npm / package scripts", proficiency: 62 },
-      { name: "Docker basics", proficiency: 35 },
-      { name: "CI/CD basics", proficiency: 38 },
-      { name: "Cursor / VS Code", proficiency: 72 },
+      { name: "Git / GitHub" },
+      { name: "npm / package scripts" },
+      { name: "Docker basics" },
+      { name: "CI/CD basics" },
+      { name: "Cursor / VS Code" },
     ],
   },
 ];
