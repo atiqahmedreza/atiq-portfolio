@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { AnimatedSiteBackground } from "@/components/AnimatedSiteBackground";
 import { Navbar } from "@/components/Navbar";
@@ -8,23 +8,33 @@ import { JsonLd } from "@/components/JsonLd";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { siteConfig } from "@/data/site";
 
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
+/*
+ * Self-hosted rather than next/font/google: the Google loader fetches font CSS
+ * at build time, and CI runners get rate-limited by Google, which failed the
+ * build. These are the same latin-subset variable files Google serves, so the
+ * rendering is identical — the build just no longer needs the network.
+ * Weight ranges below are the fonts' real fvar axes.
+ */
+const plusJakarta = localFont({
+  src: "./fonts/plus-jakarta-sans-variable.woff2",
+  weight: "200 800",
+  style: "normal",
   variable: "--font-plus-jakarta",
   display: "swap",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500"],
+const inter = localFont({
+  src: "./fonts/inter-variable.woff2",
+  weight: "100 900",
+  style: "normal",
   variable: "--font-inter",
   display: "swap",
 });
 
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
+const jetbrains = localFont({
+  src: "./fonts/jetbrains-mono-variable.woff2",
+  weight: "400 800",
+  style: "normal",
   variable: "--font-jetbrains",
   display: "swap",
 });

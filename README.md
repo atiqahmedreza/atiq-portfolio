@@ -18,6 +18,8 @@ All content is driven by typed data files, so updating the site is a data edit r
   shipping a byte of JS to the users who opt out.
 - **Almost entirely server-rendered** — scroll reveals go through one small `<Reveal>` client component
   (an IntersectionObserver plus a CSS transition), so the sections themselves stay server components.
+- **Self-hosted fonts** — no build-time or runtime requests to Google Fonts, so builds work
+  offline and visitors make no third-party request.
 - **SEO complete** — `robots.txt`, `sitemap.xml`, a web manifest, canonical URLs, Open Graph/Twitter cards,
   and JSON-LD `Person` + `ProfilePage` + `SoftwareSourceCode` structured data.
 
