@@ -23,13 +23,13 @@ export const projects: Project[] = [
       "Full-stack travel agency for Bangladesh tours — explore packages, book with Stripe, and admin dashboards.",
     image: "/images/projects/wanderly.webp",
     tags: ["Next.js", "Express.js", "MongoDB", "Stripe", "JWT", "Render"],
-    liveUrl: "https://wanderly-travel-agency-1.onrender.com",
+    liveUrl: "https://wanderly-travel-agency-drab.vercel.app",
     githubUrl: "https://github.com/atiqahmedreza/wanderly-travel-agency",
     description:
-      "Wanderly is a production-style travel platform built as a monorepo: a Next.js 14 frontend with Explore filters, package detail pages, blogs, and role-based user and admin dashboards, paired with an Express API on MongoDB Atlas. JWT auth secures bookings and wishlists; Stripe Checkout handles payments with a dev fallback when keys are absent. The app is deployed on Render with separate API and web services, CORS tied to the live client URL, and seed data for nine Bangladesh tour packages.",
+      "Wanderly is a production-style travel platform built as a monorepo: a Next.js 14 frontend with Explore filters, package detail pages, blogs, and role-based user and admin dashboards, paired with an Express API on MongoDB Atlas. JWT auth secures bookings and wishlists; Stripe Checkout handles payments with a dev fallback when keys are absent. The client is deployed on Vercel and the Express API on Render as a separate service, with a CORS allowlist covering both clients and seed data for nine Bangladesh tour packages.",
     role: "Sole developer — frontend, API, database schema, payments, and deployment.",
     outcomes: [
-      { label: "Deployed services", value: "2 (web + API)" },
+      { label: "Deployed services", value: "2 (Vercel + Render)" },
       { label: "Tour packages seeded", value: "9" },
       { label: "Dashboard roles", value: "User + Admin" },
     ],
